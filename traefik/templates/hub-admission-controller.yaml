@@ -209,6 +209,27 @@ webhooks:
           - v1alpha1
         resources:
           - apiratelimits
+  - name: hub-agent.traefik.plan
+    clientConfig:
+      service:
+        name: admission
+        namespace: {{ template "traefik.namespace" . }}
+        path: /api-plan
+      caBundle: {{ $cert.Cert }}
+    sideEffects: None
+    admissionReviewVersions:
+      - v1
+    rules:
+      - operations:
+          - CREATE
+          - UPDATE
+          - DELETE
+        apiGroups:
+          - hub.traefik.io
+        apiVersions:
+          - v1alpha1
+        resources:
+          - apiplans
   - name: hub-agent.traefik.version
     clientConfig:
       service:

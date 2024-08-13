@@ -244,6 +244,7 @@ rules:
     resources:
       - accesscontrolpolicies
       - apiaccesses
+      - apiplans
       - apiportals
       - apiratelimits
       - apis
